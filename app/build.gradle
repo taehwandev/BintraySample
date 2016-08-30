@@ -26,4 +26,9 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.0'
     testCompile 'junit:junit:4.12'
+
+    // jcenter pre-deployment testing code
+    compile 'tech.thdev:samplebase:0.0.1-Alpha@aar'
+    // jcenter release version
+//    compile 'tech.thdev:sample-base:0.0.1-Alpha'
 }

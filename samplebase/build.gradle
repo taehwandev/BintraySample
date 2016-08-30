@@ -3,18 +3,58 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 
-def releaseVersion = '0.0.1'
-group = 'tech.thdev'
+def releaseVersion = '0.0.1-Alpha'
+def groupName = 'tech.thdev'
+
+group = groupName
 version = releaseVersion
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'BintraySample'
+            description 'is sample base'
+            url 'https://github.com/taehwandev/BintraySample'
+            inceptionYear '2016'
+
+            packaging 'aar'
+            // gradle dependency
+            // ex) compile '(groupId)tech.thdev:(artifactId)sample-base:(version)0.0.1'
+            groupId groupName
+            artifactId 'Sample Base'
+            version releaseVersion
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/taehwandev/BintraySample.git'
+                developerConnection 'https://github.com/taehwandev/BintraySample.git'
+                url 'https://github.com/taehwandev/BintraySample'
+
+            }
+            developers {
+                developer {
+                    id 'taehwandev'
+                    name 'taehwan'
+                    email 'taehwan@thdev.tech'
+                }
+            }
+        }
+    }
+}
 
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
     configurations = ['archives']
-
     pkg {
-        repo = 'maven'
-        name = 'gradle-bintray-plugin-sample-base'
+        repo = groupName // Repository name (Bintray repository name create)
+        name = project.name
         userOrg = user
         licenses = ['Apache-2.0']
 
@@ -23,10 +63,12 @@ bintray {
 
         githubRepo = 'taehwandev/BintraySample' // Optional Github repository
 
+        labels = ['aar', 'android', 'example']
+        publicDownloadNumbers = true
+
         version {
             name = releaseVersion // the name of your library project
-            desc = 'Gradle Bintray Sample base'
-            released = new Date()
+            desc = 'Gradle Bintray Sample base alpha'
             vcsTag = releaseVersion
         }
     }
