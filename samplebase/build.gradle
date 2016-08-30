@@ -21,9 +21,12 @@ bintray {
         vcsUrl = 'https://github.com/taehwandev/BintraySample.git' // git url
         websiteUrl = 'https://github.com/taehwandev/BintraySample' // Website url
 
+        githubRepo = 'taehwandev/BintraySample' // Optional Github repository
+
         version {
             name = releaseVersion // the name of your library project
             desc = 'Gradle Bintray Sample base'
+            released = new Date()
             vcsTag = releaseVersion
         }
     }
