@@ -17,7 +17,10 @@ bintray {
         name = 'gradle-bintray-plugin-sample-base'
         userOrg = user
         licenses = ['Apache-2.0']
-        vcsUrl = ''
+
+        vcsUrl = 'https://github.com/taehwandev/BintraySample.git' // git url
+        websiteUrl = 'https://github.com/taehwandev/BintraySample' // Website url
+
         version {
             name = releaseVersion // the name of your library project
             desc = 'Gradle Bintray Sample base'
