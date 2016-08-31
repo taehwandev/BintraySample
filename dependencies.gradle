@@ -1,0 +1,33 @@
+ext {
+    // Build SDK version
+    buildToolsVersion = '24.0.2'
+    compileSdkVersion = 24
+    targetSdkVersion = 24
+    minSdkVersion = 16
+
+    versionCode = 1
+    libVersionName = '0.0.1-alpha1'
+
+    // Bintray setting info
+    repositoryName = 'sample' // Bintray repository name
+    packageName = 'tech.thdev' // module name ex) compile 'tech.thdev:...'
+    defaultUrl = 'https://github.com/taehwandev/BintraySample' // site url
+    defaultRepoUrl = 'https://github.com/taehwandev/BintraySample.git' // git repo url
+
+
+    // Dependencies version
+    supportLibraryVersion = '24.2.0'
+
+    // Testing-only
+    junitLibVersion = '4.12'
+    espressoLibVersion = '2.2.2'
+
+
+    // Support library Dependencies
+    appCompat = "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+
+    // Testing-only dependencies
+    junit = "junit:junit:$rootProject.ext.junitLibVersion"
+
+    espressoCore = "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoLibVersion"
+}

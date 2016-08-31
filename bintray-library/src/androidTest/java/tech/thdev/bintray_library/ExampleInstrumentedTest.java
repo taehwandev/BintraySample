@@ -1,4 +1,4 @@
-package tech.thdev.samplebase;
+package tech.thdev.bintray_library;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("tech.thdev.samplebase", appContext.getPackageName());
+        assertEquals("tech.thdev.bintray_library", appContext.getPackageName());
     }
 }

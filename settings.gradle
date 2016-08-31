@@ -1,1 +1,1 @@
-include ':app', ':samplebase'
+include ':app', ':bintray-library'

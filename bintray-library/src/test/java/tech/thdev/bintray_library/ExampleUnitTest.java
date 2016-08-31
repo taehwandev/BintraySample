@@ -1,4 +1,4 @@
-package tech.thdev.samplebase;
+package tech.thdev.bintray_library;
 
 import org.junit.Test;
 
