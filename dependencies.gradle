@@ -6,11 +6,10 @@ ext {
     minSdkVersion = 16
 
     versionCode = 3
-    libVersionName = '0.0.1-alpha3'
+    libVersionName = '0.0.1-alpha7'
 
     // Bintray setting info
     repositoryName = 'sample' // Bintray repository name
-    libraryName = 'bintray-library' // aar name
     packageName = 'tech.thdev' // module name ex) compile 'tech.thdev:...'
     defaultUrl = 'https://github.com/taehwandev/BintraySample' // site url
     defaultRepoUrl = 'https://github.com/taehwandev/BintraySample.git' // git repo url

@@ -22,7 +22,7 @@ install {
             // ex) compile 'tech.thdev:bintray-sample:0.0.1'
             packaging 'aar'
             groupId rootProject.ext.packageName // compile 'tech.thdev:
-            artifactId rootProject.ext.libraryName // :bintray-sample:
+            artifactId project.name
             version rootProject.ext.libVersionName // :0.0.1-alpha
 
             licenses {
@@ -72,7 +72,7 @@ bintray {
 
     pkg {
         repo = repositoryName // Repository name (Created in the repository Bintray site)
-        name = project.name // package name
+        name = project.name// module name
         userOrg = user // An optional organization name when the repo belongs to one of the user's orgs
         desc = 'Bintray sample library' // Optional
         licenses = ['Apache-2.0']
