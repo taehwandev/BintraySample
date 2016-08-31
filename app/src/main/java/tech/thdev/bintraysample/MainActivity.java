@@ -1,9 +1,10 @@
 package tech.thdev.bintraysample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
-import tech.thdev.samplebase.Sample;
+import tech.thdev.bintray_library.Sample;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Sample.print();
+        // Library test
+        TextView textView = (TextView) findViewById(R.id.tv);
+        textView.setText(Sample.getString());
     }
 }

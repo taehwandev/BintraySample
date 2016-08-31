@@ -22,7 +22,7 @@ install {
             // ex) compile 'tech.thdev:bintray-sample:0.0.1'
             packaging 'aar'
             groupId rootProject.ext.packageName // compile 'tech.thdev:
-            artifactId 'bintray-sample' // :bintray-sample:
+            artifactId rootProject.ext.libraryName // :bintray-sample:
             version rootProject.ext.libVersionName // :0.0.1-alpha
 
             licenses {

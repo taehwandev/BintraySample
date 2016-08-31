@@ -29,7 +29,7 @@ dependencies {
     testCompile rootProject.ext.junit
 
     // jcenter pre-deployment testing code
-//    compile 'tech.thdev:samplebase:0.0.1-Alpha@aar'
+    compile 'tech.thdev:bintray-library:0.0.1-alpha3@aar'
     // jcenter release version
-//    compile 'tech.thdev:sample-base:0.0.1-Alpha'
+//    compile 'tech.thdev:bintray-library:0.0.1-alpha3'
 }
