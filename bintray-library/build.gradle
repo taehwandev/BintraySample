@@ -64,8 +64,6 @@ install {
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    user = 'taehwandev'
-    key = '01aa820e3d607450e6a7921afa845baedfc8ecc5'
 
 //    publications = ['mavenJava']  // When uploading Maven-based publication files
     configurations = ['archives'] // When uploading configuration files
