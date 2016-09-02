@@ -7,15 +7,15 @@ apply plugin: 'com.jfrog.bintray'
 
 
 group = rootProject.ext.packageName
-version = rootProject.ext.libVersionName
+version = rootProject.ext.libraryVersionName
 
 // Local aar info
 install {
     repositories.mavenInstaller {
         pom.project {
-            name 'Bintray sample library'
-            description 'Is bintray sample'
-            url rootProject.ext.defaultUrl
+            name project.name
+            description rootProject.ext.description
+            url rootProject.ext.websiteUrl
             inceptionYear '2016' // release date
 
             // gradle dependency
@@ -23,7 +23,7 @@ install {
             packaging 'aar'
             groupId rootProject.ext.packageName // compile 'tech.thdev:
             artifactId project.name
-            version rootProject.ext.libVersionName // :0.0.1-alpha
+            version rootProject.ext.libraryVersionName // :0.0.1-alpha
 
             licenses {
                 license {
@@ -34,9 +34,9 @@ install {
             }
 
             scm { // Optional setting
-                connection rootProject.ext.defaultRepoUrl
-                developerConnection rootProject.ext.defaultRepoUrl
-                url rootProject.ext.defaultUrl
+                connection rootProject.ext.gitHubRepoUrl
+                developerConnection rootProject.ext.gitHubRepoUrl
+                url rootProject.ext.websiteUrl
             }
 
             developers { // Optional setting
@@ -71,27 +71,27 @@ bintray {
     publish = true // [Default: false] Whether version should be auto published after an upload
 
     pkg {
-        repo = repositoryName // Repository name (Created in the repository Bintray site)
+        repo = rootProject.ext.repositoryName // Repository name (Created in the repository Bintray site)
         name = project.name// module name
         userOrg = user // An optional organization name when the repo belongs to one of the user's orgs
         desc = 'Bintray sample library' // Optional
         licenses = ['Apache-2.0']
 
-        vcsUrl = rootProject.ext.defaultRepoUrl
-        websiteUrl = rootProject.ext.defaultUrl
+        vcsUrl = rootProject.ext.gitHubRepoUrl
+        websiteUrl = rootProject.ext.websiteUrl
         // issueTrackerUrl = '' // Optional
 
         labels = ['aar', 'android', 'example'] // Optional
         publicDownloadNumbers = true
 
-        githubRepo = 'taehwandev/BintraySample' // Optional Github repository
-        githubReleaseNotesFile = 'CONTRIBUTING.md' // Optional Github readme file
+        githubRepo = rootProject.ext.githubRepo // Optional Github repository
+        githubReleaseNotesFile = rootProject.ext.githubReleaseNotesFile // Optional Github readme file
 
         version {
-            name = rootProject.ext.libVersionName // The name of your library project
-            desc = 'Gradle Bintray sample' // Optional - Version-specific description'
+            name = rootProject.ext.libraryVersionName // The name of your library project
+            desc = rootProject.ext.description // Optional - Version-specific description'
             released  = new Date() // Optional - Date of the version release. 2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
-            vcsTag = rootProject.ext.libVersionName
+            vcsTag = rootProject.ext.libraryVersionName
         }
     }
 }
@@ -106,7 +106,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.libVersionName
+        versionName rootProject.ext.libraryVersionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -127,4 +127,32 @@ dependencies {
 
     compile rootProject.ext.appCompat
     testCompile rootProject.ext.junit
+}
+
+
+// JCenter publish
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+// Optional docs
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+// Optional javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+//    archives javadocJar // Optional
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
 }
